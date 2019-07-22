@@ -25,7 +25,7 @@ const RootNavigator = createAppContainer(createSwitchNavigator({
     App: AppStack,
     Auth: AuthStack
   },{
-    initialRouteName: 'App'
+    initialRouteName: 'Auth'
   }));
 
 class App extends Component {
