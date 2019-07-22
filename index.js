@@ -11,6 +11,7 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const createStoreWithMiddleware = createStore(reducers,composeEnhancers(
     applyMiddleware(promiseMiddleware)
 ));
+
 const appRedux = () => (
     <Provider store={createStoreWithMiddleware}>
         <App />
