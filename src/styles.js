@@ -11,6 +11,14 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         alignItems: 'center',
         justifyContent: 'center'
+    },
+    input: {
+        width: '100%',
+        borderBottomWidth: 2,
+        borderBottomColor: '#eaeaea',
+        fontSize: 16,
+        padding: 5,
+        marginTop: 10
     }
 });
 
