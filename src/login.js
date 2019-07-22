@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import {View,Text,ActivityIndicator,ScrollView} from 'react-native';
+import {View,ActivityIndicator,ScrollView} from 'react-native';
 import styles from './styles';
 import LogoComponent from './login_logo';
 import LoginForm from './login-form';
@@ -13,10 +13,10 @@ class LoginComponent extends Component {
                 <ActivityIndicator />
             </View>);
         } else {
-            return (<ScrollView style={styles.container}>
-                <View>
+            return (<ScrollView>
+                <View style={styles.container}>
                     <LogoComponent />
-                    <LoginForm />
+                    <LoginForm goNext={() => this.props.navigation.navigate('App')} />
                 </View>
             </ScrollView>);
         }

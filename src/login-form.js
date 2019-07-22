@@ -1,13 +1,14 @@
 import React,{Component} from 'react';
-import {View,Text} from 'react-native';
+import {View,Text,Button} from 'react-native';
 import FormInput from './form-input';
+import styles from './styles';
 
 class LoginForm extends Component{
     state ={
         type: 'Login',
         action: 'Login',
         actionMode: 'I want to register',
-        hasErrors: false,
+        hasErrors: true,
         form: {
             email: {
                 value: '',
@@ -19,7 +20,7 @@ class LoginForm extends Component{
                 }
             },
             password: {
-                value: '****',
+                value: '',
                 valid: false,
                 type: "textinput",
                 rules: {
@@ -28,7 +29,7 @@ class LoginForm extends Component{
                 }
             },
             confirmPassword: {
-                value: 'be',
+                value: '',
                 valid: false,
                 type: "textinput",
                 rules: {
@@ -45,6 +46,17 @@ class LoginForm extends Component{
         this.setState({form: formCopy});
     };
 
+    submitUser = () => {};
+
+    changeActionMode = () => {
+        const type = this.state.type;
+        this.setState({
+            type: type === 'Login' ? 'Register' : 'Login',
+            action: type === 'Login' ? 'Register' : 'Login',
+            actionMode: type === 'Login' ? 'I want to sign  in' : 'I want to register'
+        });
+    };
+
     confirmPassword = () => (
         this.state.type != 'Login' ?
         <FormInput 
@@ -59,7 +71,9 @@ class LoginForm extends Component{
 
     formHasErrors = () => (
         this.state.hasErrors ?
-        <Text>lulz kat gaya</Text>:null
+        <View style={styles.errorContainer}>
+            <Text style={styles.errorLabel}>lulz kat gaya</Text>
+        </View>:null
     );
 
     render(){
@@ -83,6 +97,11 @@ class LoginForm extends Component{
             />
             {this.confirmPassword()}
             {this.formHasErrors()}
+            <View style={{marginTop: 20}}>
+                <View style={styles.button}><Button title={this.state.action} onPress={this.submitUser} /></View>
+                <View style={styles.button}><Button title={this.state.actionMode} onPress={this.changeActionMode} /></View>
+                <View style={styles.button}><Button title={"I'll do it later"} onPress={() => this.props.goNext()} /></View>
+            </View>
         </View>);
     }
 }

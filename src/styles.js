@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import {StyleSheet,Platform} from 'react-native';
 
 const styles = StyleSheet.create({
     container: {
@@ -19,6 +19,27 @@ const styles = StyleSheet.create({
         fontSize: 16,
         padding: 5,
         marginTop: 10
+    },
+    errorContainer: {
+        marginTop: 30,
+        marginBottom: 10,
+        padding: 10,
+        backgroundColor: '#f44336'
+    },
+    errorLabel: {
+        color: '#fff',
+        textAlignVertical: 'center',
+        textAlign: 'center'
+    },
+    button: {
+        ...Platform.select({
+            ios:{
+                marginBottom: 0
+            },
+            android:{
+                marginVertical: 10
+            }
+        })
     }
 });
 

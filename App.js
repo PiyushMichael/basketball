@@ -16,6 +16,8 @@ const AppStack = createBottomTabNavigator({
 
 const AuthStack = createStackNavigator({
   Login: LoginComponent
+},{
+  headerMode: 'none'
 });
 
 const Tabbed = createAppContainer(AuthStack);
