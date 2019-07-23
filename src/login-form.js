@@ -46,12 +46,37 @@ class LoginForm extends Component{
         formCopy[name].value = value;
         let rules = formCopy[name].rules;
         let valid = ValidationRules(value,rules,formCopy);
-        console.warn(valid);
-        formCopy.valid = valid;
+        //console.warn(valid);
+        formCopy[name].valid = valid;
         this.setState({form: formCopy});
     };
 
-    submitUser = () => {};
+    submitUser = () => {
+        let isFormValid = true;
+        let formToSubmit ={};
+        const formCopy = this.state.form;
+
+        for (let key in formCopy){
+            if(this.state.type === 'Login'){
+                if(key !== 'confirmPassword'){
+                    //console.warn(key+' '+formCopy[key].valid);
+                    isFormValid = isFormValid && formCopy[key].valid;
+                    formToSubmit[key] = formCopy[key].value;
+                }
+            }
+            else {
+                //console.warn(key+' '+formCopy[key].valid);
+                if(key !== 'confirmPassword') isFormValid = isFormValid && formCopy[key].valid;
+                formToSubmit[key] = formCopy[key].value;
+            }
+        }
+
+        if(isFormValid){
+            if(this.state.type === 'Login'){console.warn(formToSubmit)}
+            else{console.warn(formToSubmit)}
+        }
+        else {this.setState({hasErrors: true})}
+    };
 
     changeActionMode = () => {
         const type = this.state.type;
