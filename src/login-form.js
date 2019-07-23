@@ -1,8 +1,11 @@
 import React,{Component} from 'react';
 import {View,Text,Button} from 'react-native';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
 import FormInput from './form-input';
 import styles from './styles';
 import ValidationRules from './validation-rules';
+import {signIn,signUp} from  './actions';
 
 class LoginForm extends Component{
     state ={
@@ -72,8 +75,8 @@ class LoginForm extends Component{
         }
 
         if(isFormValid){
-            if(this.state.type === 'Login'){console.warn(formToSubmit)}
-            else{console.warn(formToSubmit)}
+            if(this.state.type === 'Login'){this.props.signIn(formToSubmit)}
+            else{this.props.signUp(formToSubmit)}
         }
         else {this.setState({hasErrors: true})}
     };
@@ -136,4 +139,15 @@ class LoginForm extends Component{
     }
 }
 
-export default LoginForm;
+function mapStateToProps(state){
+    console.warn(state);
+    return {
+        User: state.User
+    };
+}
+
+function mapDispatchToProps(dispatch){
+    return bindActionCreators({signIn,signUp},dispatch);
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(LoginForm);
