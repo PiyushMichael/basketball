@@ -6,6 +6,7 @@ import FormInput from './form-input';
 import styles from './styles';
 import ValidationRules from './validation-rules';
 import {signIn,signUp} from  './actions';
+import {setTokens} from './types';
 
 class LoginForm extends Component{
     state ={
@@ -54,6 +55,18 @@ class LoginForm extends Component{
         this.setState({form: formCopy});
     };
 
+    manageAcces = () => {
+        if(!this.props.User.auth.uid){
+            this.setState({hasErrors: true});
+        }
+        else {
+            setTokens(this.props.User.auth,() => {
+                this.setState({hasErrors: false});
+                this.props.goNext();
+            });
+        }
+    };
+
     submitUser = () => {
         let isFormValid = true;
         let formToSubmit ={};
@@ -75,8 +88,12 @@ class LoginForm extends Component{
         }
 
         if(isFormValid){
-            if(this.state.type === 'Login'){this.props.signIn(formToSubmit)}
-            else{this.props.signUp(formToSubmit)}
+            if(this.state.type === 'Login'){this.props.signIn(formToSubmit).then(() => {
+                this.manageAcces();
+            })}
+            else{this.props.signUp(formToSubmit).then(() => {
+                this.manageAcces();
+            })}
         }
         else {this.setState({hasErrors: true})}
     };
