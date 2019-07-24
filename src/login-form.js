@@ -140,7 +140,7 @@ class LoginForm extends Component{
 }
 
 function mapStateToProps(state){
-    console.warn(state);
+    //console.warn(state);
     return {
         User: state.User
     };

@@ -11,7 +11,6 @@ export const signIn = () => {
     };
 };
 export function signUp(data){
-
     const request = axios({
         method:'POST',
         url:SIGNUP_URL,
