@@ -41,6 +41,16 @@ const GamesStack = createStackNavigator({
 const AppStack = createBottomTabNavigator({
   NewsPage: NewsStack,
   GamesPage: GamesStack
+},{
+  tabBarOptions: {
+    activeTintColor: '#fff',
+    showLabel: false,
+    activeBackgroundColor: '#00194b',
+    inactiveBackgroundColor: '#001338',
+    style: {
+      backgroundColor: '#001338'
+    }
+  }
 });
 
 const AuthStack = createStackNavigator({
