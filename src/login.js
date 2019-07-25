@@ -30,7 +30,7 @@ class LoginComponent extends Component {
     render(){
         if (this.state.loading) {
             return(<View style={styles.loading}>
-                <ActivityIndicator style={{backgroundColor: 'yellow'}} />
+                <ActivityIndicator style={{backgroundColor: 'yellow',width:'100%',height:'100%'}} />
             </View>);
         } else {
             return (<ScrollView>

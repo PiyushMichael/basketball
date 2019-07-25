@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {SIGN_IN,SIGN_UP,SIGNIN_URL,SIGNUP_URL,FIREBASEURL,REFRESH_URL,AUTO_SIGN_IN} from './types';
+import {SIGN_IN,SIGN_UP,SIGNIN_URL,SIGNUP_URL,FIREBASEURL,REFRESH_URL,AUTO_SIGN_IN,GET_NEWS} from './types';
 
 export const signIn = (data) => {
     const request = axios({
@@ -61,6 +61,28 @@ export const autoSignIn = (refToken) => {
 
     return {
         type: AUTO_SIGN_IN,
+        payload: request
+    };
+}
+
+export function getNews(){
+    const request = axios({
+        method: 'GET',
+        url: `${FIREBASEURL}/news.json`
+    }).then(response => {
+        const articles = [];
+        for(let key in response.data){
+            articles.push({
+                ...response.data[key],
+                id: key,
+
+            })
+        }
+        return articles;
+    });
+    
+    return {
+        type: GET_NEWS,
         payload: request
     };
 }

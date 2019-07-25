@@ -8,6 +8,7 @@ export const SIGNUP_URL = `https://identitytoolkit.googleapis.com/v1/accounts:si
 export const SIGNIN_URL = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${APIKEY}`;
 export const REFRESH_URL = `https://securetoken.googleapis.com/v1/token?key=${APIKEY}`;
 export const AUTO_SIGN_IN = 'AUTO_SIGN_IN';
+export const GET_NEWS = 'GET_NEWS';
 
 export const getTokens = (cb) => {
     //check comment in next function
