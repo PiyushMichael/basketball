@@ -80,6 +80,27 @@ const styles = StyleSheet.create({
         color: '#828282',
         fontSize: 12,
         fontFamily: 'Roboto-Light'
+    },
+    articleContainer: {
+        padding: 10,
+    },
+    articleTitle: {
+        fontSize: 23,
+        color: '#323232',
+        fontFamily: 'Roboto-Bold'
+    },
+    articleData: {
+        fontSize: 12,
+        color: '#828282',
+        fontFamily: 'Roboto-Light'
+    },
+    articleContent: {
+        marginTop: 30
+    },
+    articleText: {
+        fontSize: 12,
+        lineHeight: 20,
+        fontFamily: 'Roboto-Light'
     }
 });
 
