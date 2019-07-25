@@ -1,6 +1,7 @@
 import React,{Component} from 'react';
 import {Image} from 'react-native';
 import {createSwitchNavigator,createStackNavigator,createBottomTabNavigator,createAppContainer} from 'react-navigation';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 /*----------------------*/
 import LoginComponent from './src/login';
 import NewsComponent from './src/news';
@@ -50,7 +51,23 @@ const AppStack = createBottomTabNavigator({
     style: {
       backgroundColor: '#001338'
     }
-  }
+  },
+  initialRouteName: 'NewsPage',
+  defaultNavigationOptions: ({navigation}) => ({
+    tabBarIcon:({focused,horizontal,tintColor}) => {
+      const {routeName} = navigation.state;
+      let IconName;
+      switch(routeName){
+        case 'NewsPage': IconName = 'ios-paper'
+          break;
+        case 'GamesPage': IconName = 'ios-tv'
+          break;
+        default: IconName = 'ios-add'
+      }
+      //icons are ios-tv and ios-paper
+      return <Ionicons name={IconName} size={25} color={tintColor} />
+    }
+  })
 });
 
 const AuthStack = createStackNavigator({
