@@ -61,7 +61,8 @@ const styles = StyleSheet.create({
     titleCard: {
         color: '#232323',
         fontSize: 16,
-        padding: 5
+        padding: 5,
+        fontFamily: 'Roboto-Bold'
     },
     bottomCard: {
         flex: 1,
@@ -73,11 +74,12 @@ const styles = StyleSheet.create({
     bottomCardTeam: {
         color: '#828282',
         fontSize: 12,
-        fontWeight: 'bold'
+        fontFamily: 'Roboto-Bold'
     },
     bottomCardDate: {
         color: '#828282',
-        fontSize: 12
+        fontSize: 12,
+        fontFamily: 'Roboto-Light'
     }
 });
 
