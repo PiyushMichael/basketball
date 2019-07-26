@@ -1,5 +1,5 @@
 import {combineReducers} from 'redux';
-import {SIGN_IN,SIGN_UP,AUTO_SIGN_IN,GET_NEWS} from './types';
+import {SIGN_IN,SIGN_UP,AUTO_SIGN_IN,GET_NEWS,GET_GAMES} from './types';
 
 function user_reducer(state={},action){
     switch(action.type){
@@ -37,7 +37,17 @@ function news_reducer(state={},action){
     }
 };
 
+function games_reducer(state={},action){
+    switch(action.type){
+        case GET_GAMES: return {
+            ...state,games: action.payload
+        };
+        default: return state;
+    }
+}
+
 export const reducers = combineReducers({
     User: user_reducer,
-    News: news_reducer
+    News: news_reducer,
+    Games: games_reducer,
 });

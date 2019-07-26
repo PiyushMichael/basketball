@@ -1,10 +1,36 @@
 import React,{Component} from 'react';
-import {View,Text} from 'react-native';
+import {ScrollView,View,Text,TouchableOpacity} from 'react-native';
+import {connect} from 'react-redux';
+import Moment from 'moment';
+import {getGames} from './actions';
 
 class GamesComponent extends Component {
+    componentDidMount(){
+        this.props.dispatch(getGames());
+    }
+
+    RenderGames = (games) => (
+        games ? games.map((game,i) => (<TouchableOpacity key={i} onPress={() => this.props.navigation.navigate('Video',{game})}>
+            <Text>{game.city}</Text>
+            <Text>{Moment(game.date).format('d MMMM')}</Text>
+            <Text>{game.local}</Text>
+            <Text>{game.play}</Text>
+            <Text>{game.time}</Text>
+        </TouchableOpacity>)) : null
+    )
+
     render(){
-        return <View><Text>games screen :)</Text></View>
+        return (<ScrollView><View style={{backgroundColor:'#f0f0f0',flex: 1,flexDirection: 'column',flexWrap: 'nowrap'}}>
+            {this.RenderGames(this.props.Games.games)}
+        </View></ScrollView>);
     }
 }
 
-export default GamesComponent;
+function mapStateToProps(state){
+    if(state.Games) console.warn(state.Games);
+    return {
+        Games: state.Games
+    };
+};
+
+export default connect(mapStateToProps)(GamesComponent);

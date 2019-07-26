@@ -9,6 +9,8 @@ export const SIGNIN_URL = `https://identitytoolkit.googleapis.com/v1/accounts:si
 export const REFRESH_URL = `https://securetoken.googleapis.com/v1/token?key=${APIKEY}`;
 export const AUTO_SIGN_IN = 'AUTO_SIGN_IN';
 export const GET_NEWS = 'GET_NEWS';
+export const GET_GAMES = 'GET_GAMES';
+export const GET_TEAMS = 'GET_TEAMS';
 
 export const getTokens = (cb) => {
     //check comment in next function
@@ -30,6 +32,22 @@ export const setTokens = (values,cb) => {
         ['@basketball@expireToken',expiration.toString()],
         ['@basketball@uid',values.uid]
     ]).then(response => {cb()});
+};
+
+export const convertFirebase = (data) => {
+    const newData = [];
+    for(let key in data){
+        newData.push({
+            ...data[key],
+            id: key
+        });
+    }
+    return newData;
+};
+
+export const findTeamData = (id,teams) => {
+    const value = teams.find((team) => {return team.id === id});
+    return value;
 };
 
 //    apiKey: "AIzaSyCpfzCK1DqXsxBbJFCRVaRyK_JRf8RnaT4"
