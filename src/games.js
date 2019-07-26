@@ -1,8 +1,9 @@
 import React,{Component} from 'react';
-import {ScrollView,View,Text,TouchableOpacity} from 'react-native';
+import {Image,ScrollView,View,Text,TouchableOpacity} from 'react-native';
 import {connect} from 'react-redux';
 import Moment from 'moment';
 import {getGames} from './actions';
+import styles from './styles';
 
 class GamesComponent extends Component {
     componentDidMount(){
@@ -11,11 +12,20 @@ class GamesComponent extends Component {
 
     RenderGames = (games) => (
         games ? games.map((game,i) => (<TouchableOpacity key={i} onPress={() => this.props.navigation.navigate('Video',{game})}>
-            <Text>{game.city}</Text>
-            <Text>{Moment(game.date).format('d MMMM')}</Text>
-            <Text>{game.local}</Text>
-            <Text>{game.play}</Text>
-            <Text>{game.time}</Text>
+            <View style={styles.gameContainer}>
+                <View style={styles.teamContainer}>
+                    <Image style={{height: 80, width: 80, resizeMode: 'contain'}} source={{uri: game.awayData.logo}} />
+                    <Text style={styles.teamRecord}>{game.awayData.wins} - {game.awayData.loss}</Text>
+                </View>
+                <View style={styles.teamContainer}>
+                    <Text style={styles.gameTime}>{game.time}</Text>
+                    <Text>{Moment(game.date).format('d MMMM')}</Text>
+                </View>
+                <View style={styles.teamContainer}>
+                    <Image style={{height: 80, width: 80, resizeMode: 'contain'}} source={{uri: game.localData.logo}} />
+                    <Text style={styles.teamRecord}>{game.localData.wins} - {game.localData.loss}</Text>
+                </View>
+            </View>
         </TouchableOpacity>)) : null
     )
 
@@ -27,7 +37,7 @@ class GamesComponent extends Component {
 }
 
 function mapStateToProps(state){
-    if(state.Games) console.warn(state.Games);
+    //if(state.Games) console.warn(state.Games);
     return {
         Games: state.Games
     };

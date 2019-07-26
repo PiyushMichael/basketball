@@ -101,6 +101,34 @@ const styles = StyleSheet.create({
         fontSize: 12,
         lineHeight: 20,
         fontFamily: 'Roboto-Light'
+    },
+    gameContainer: {
+        flexDirection: 'row',
+        marginBottom: 10,
+        shadowColor: '#dddddd',
+        shadowOffset: {
+            width: 0,
+            height: 2
+        },
+        shadowOpacity: 0.8,
+        shadowRadius: 2,
+        elevation: 1,
+        borderRadius: 2
+    },
+    teamContainer: {
+        width: '33%',
+        height: 100,
+        backgroundColor: '#fff',
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    teamRecord: {
+        fontFamily: 'Roboto-Light',
+        fontSize: 12
+    },
+    gameTime: {
+        fontFamily: 'Roboto-Bold',
+        fontSize: 15
     }
 });
 
