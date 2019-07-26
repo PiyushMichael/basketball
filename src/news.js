@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import {View,Text,ScrollView,Image,TouchableOpacity,Button} from 'react-native';
+import {View,Text,ScrollView,Image,TouchableOpacity,Button,ActivityIndicator} from 'react-native';
 import {connect} from 'react-redux';
 import Moment from 'moment';
 import {getNews} from './actions';
@@ -29,7 +29,7 @@ class NewsComponent extends Component {
                     </View>
                 </View></TouchableOpacity>
             ))
-        : null
+        : (<ActivityIndicator style={{backgroundColor: '#e0b700',width:'100%',height:'80%'}} />)
     )
     
     render(){

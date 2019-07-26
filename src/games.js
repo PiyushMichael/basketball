@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import {Image,ScrollView,View,Text,TouchableOpacity,Button} from 'react-native';
+import {Image,ScrollView,View,Text,TouchableOpacity,Button,ActivityIndicator} from 'react-native';
 import {connect} from 'react-redux';
 import Moment from 'moment';
 import {getGames} from './actions';
@@ -27,7 +27,7 @@ class GamesComponent extends Component {
                     <Text style={styles.teamRecord}>{game.localData.wins} - {game.localData.loss}</Text>
                 </View>
             </View>
-        </TouchableOpacity>)) : null
+        </TouchableOpacity>)) : (<ActivityIndicator style={{backgroundColor: '#e0b700',width:'100%',height:'80%'}} />)
     )
 
     render(){
