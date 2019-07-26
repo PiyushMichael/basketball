@@ -1,9 +1,10 @@
 import React,{Component} from 'react';
-import {Image,ScrollView,View,Text,TouchableOpacity} from 'react-native';
+import {Image,ScrollView,View,Text,TouchableOpacity,Button} from 'react-native';
 import {connect} from 'react-redux';
 import Moment from 'moment';
 import {getGames} from './actions';
 import styles from './styles';
+import {LogOut} from './types';
 
 class GamesComponent extends Component {
     componentDidMount(){
@@ -32,6 +33,7 @@ class GamesComponent extends Component {
     render(){
         return (<ScrollView><View style={{backgroundColor:'#f0f0f0',flex: 1,flexDirection: 'column',flexWrap: 'nowrap'}}>
             {this.RenderGames(this.props.Games.games)}
+            <Button title="Logout" onPress={() => LogOut(this.props)} />
         </View></ScrollView>);
     }
 }

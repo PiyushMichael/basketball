@@ -162,6 +162,9 @@ android {
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
     }
+    compileOptions {
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
     // applicationVariants are e.g. debug, release
     applicationVariants.all { variant ->
         variant.outputs.each { output ->
@@ -188,6 +191,7 @@ android {
 }
 
 dependencies {
+    implementation project(':react-native-video')
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "com.facebook.react:react-native:+"  // From node_modules
 	implementation project(':react-native-vector-icons')

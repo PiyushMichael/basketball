@@ -129,6 +129,22 @@ const styles = StyleSheet.create({
     gameTime: {
         fontFamily: 'Roboto-Bold',
         fontSize: 15
+    },
+    videoPlayer: {
+        position: 'absolute',
+        top: 0,
+        bottom: 0,
+        left: 0,
+        right: 0,
+    },
+    videoAuth: {
+        flex: 1,
+        margin: 50,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    videoAuthText: {
+        fontFamily: 'Roboto-Bold'
     }
 });
 

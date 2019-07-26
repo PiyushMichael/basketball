@@ -50,6 +50,10 @@ export const findTeamData = (id,teams) => {
     return value;
 };
 
+export const LogOut = (props) => {
+    AsyncStorage.clear().then(x => props.navigation.navigate('Auth'));
+};
+
 //    apiKey: "AIzaSyCpfzCK1DqXsxBbJFCRVaRyK_JRf8RnaT4"
 //    databaseURL: "https://basketball-b8f89.firebaseio.com"
 //  https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=[API_KEY]

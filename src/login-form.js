@@ -149,8 +149,8 @@ class LoginForm extends Component{
             {this.formHasErrors()}
             <View style={{marginTop: 20}}>
                 <View style={styles.button}><Button title={this.state.action} onPress={this.submitUser} /></View>
-                <View style={styles.button}><Button title={this.state.actionMode} onPress={this.changeActionMode} /></View>
-                <View style={styles.button}><Button title={"I'll do it later"} onPress={() => this.props.goNext()} /></View>
+                <View style={styles.button}><Button color='#8f0f0f' title={this.state.actionMode} onPress={this.changeActionMode} /></View>
+                <View style={styles.button}><Button color='#8f0f0f' title={"I'll do it later"} onPress={() => this.props.goNext()} /></View>
             </View>
         </View>);
     }

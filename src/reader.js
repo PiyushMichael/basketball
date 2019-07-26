@@ -1,7 +1,8 @@
 import React,{Component} from 'react';
-import {View,Text,ScrollView,Image} from 'react-native';
+import {View,Text,ScrollView,Image,Button} from 'react-native';
 import Moment from 'moment';
 import styles from './styles';
+import {LogOut} from './types';
 
 class ReaderComponent extends Component {
     formatPara(content){
@@ -20,6 +21,7 @@ class ReaderComponent extends Component {
                     <Text style={styles.articleText}>{this.formatPara(article.content)}</Text>
                 </View>
             </View>
+            <Button title="Logout" onPress={() => LogOut(this.props)} />
         </View></ScrollView>);
     }
 }

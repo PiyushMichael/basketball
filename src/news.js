@@ -1,9 +1,10 @@
 import React,{Component} from 'react';
-import {View,Text,ScrollView,Image,TouchableOpacity} from 'react-native';
+import {View,Text,ScrollView,Image,TouchableOpacity,Button} from 'react-native';
 import {connect} from 'react-redux';
 import Moment from 'moment';
 import {getNews} from './actions';
 import styles from './styles';
+import {LogOut} from './types';
 
 class NewsComponent extends Component {
     componentDidMount(){
@@ -34,6 +35,7 @@ class NewsComponent extends Component {
     render(){
         return (<ScrollView><View style={{backgroundColor: '#f0f0f0'}}>
             {this.renderArticle(this.props.News)}
+            <Button title="Logout" onPress={() => LogOut(this.props)} />
         </View></ScrollView>);
     }
 }
