@@ -17,7 +17,7 @@ class PlayerComponent extends Component {
     render(){
         const game = this.props.navigation.state.params.game;
         if(this.state.auth) return (<View>
-            <Video style={styles.videoPlayer} source={{uri: game.play}} />
+            <Video source={{uri: game.play}} style={styles.videoPlayer} paused={false} />
             <Button title="Logout" onPress={() => LogOut(this.props)} />
         </View>);
         else return (<View style={styles.videoAuth}>
